@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Default suite]">
+  <test name="Default test(failed)">
+    <classes>
+      <class name="com.yourcompany.SampleSauceTest">
+        <methods>
+          <include name="wikipediaSearchTest" invocation-numbers="0 1"/>
+          <include name="wikipediaTitleTest" invocation-numbers="0 1"/>
+        </methods>
+      </class> <!-- com.yourcompany.SampleSauceTest -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->
