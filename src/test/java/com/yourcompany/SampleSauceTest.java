@@ -32,7 +32,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
      * Constructs a {@link com.saucelabs.common.SauceOnDemandAuthentication} instance using the supplied user name/access key.  To use the authentication
      * supplied by environment variables or from an external file, use the no-arg {@link com.saucelabs.common.SauceOnDemandAuthentication} constructor.
      */
-    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication("ndmanvar", "e82f4d14-a2af-4b5c-84ea-2f8f42549121");
+    public SauceOnDemandAuthentication authentication = new SauceOnDemandAuthentication(System.getenv("SAUCE_USERNAME"), System.getenv("SAUCE_ACCESS_KEY"));
 
     /**
      * ThreadLocal variable which contains the  {@link WebDriver} instance which is used to perform browser interactions with.
@@ -79,9 +79,9 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
         capabilities.setCapability("deviceName", deviceName);
         capabilities.setCapability("platformVersion", platformVersion);
         capabilities.setCapability("app", app);
-        
+
         capabilities.setCapability("name", "AppiumJavaTestNG");
-        
+
         webDriver.set(new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),
                 capabilities));
@@ -117,8 +117,8 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider, SauceOnD
     public void addContactTest(String platformName, String deviceName, String platformVersion, String app) throws Exception {
     	WebDriver driver = createDriver(platformName, deviceName, platformVersion, app);
     	driver.findElement(By.name("Add Contact")).click();
-    	
-    	// TODO: verify add contact button screen is loaded.    	
+
+    	// TODO: verify add contact button screen is loaded.
     	driver.quit();
     }
 
